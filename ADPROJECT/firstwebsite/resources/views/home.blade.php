@@ -4,190 +4,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glassmorphism Login Form</title>
+    <title>Venue Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Open Sans", sans-serif;
-        }
-
-        /* Body Styling */
         body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            width: 100%;
-            padding: 0 10px;
+            background-color: #f8f9fa;
         }
 
-        body::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url("https://www.codingnepalweb.com/demos/create-glassmorphism-login-form-html-css/hero-bg.jpg"), #000;
-            background-position: center;
-            background-size: cover;
-        }
-
-        /* Wrapper for the Form */
-        .wrapper {
-            width: 400px;
-            border-radius: 8px;
-            padding: 30px;
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 0;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
+        .sidebar {
+            background-color: #0056b3;
+            color: white;
+            height: 100vh;
+            padding: 15px;
         }
 
-        /* Heading */
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        /* Input Fields Styling */
-        .input-field {
-            position: relative;
-            border-bottom: 2px solid #ccc;
-            margin: 15px 0;
-        }
-
-        .input-field label {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            color: #fff;
-            font-size: 16px;
-            pointer-events: none;
-            transition: 0.15s ease;
-        }
-
-        .input-field input {
-            width: 100%;
-            height: 40px;
-            background: transparent;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            color: #fff;
-        }
-
-        .input-field input:focus~label,
-        .input-field input:valid~label {
-            font-size: 0.8rem;
-            top: 10px;
-            transform: translateY(-120%);
-        }
-
-        /* Forgot Password and Remember Me */
-        .forget {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 25px 0 35px 0;
-            color: #fff;
-        }
-
-        #remember {
-            accent-color: #fff;
-        }
-
-        .forget label {
-            display: flex;
-            align-items: center;
-        }
-
-        .forget label p {
-            margin-left: 8px;
-        }
-
-        /* Links */
-        .wrapper a {
-            color: #efefef;
+        .sidebar a {
+            color: white;
             text-decoration: none;
+            display: block;
+            margin: 10px 0;
         }
 
-        .wrapper a:hover {
+        .sidebar a:hover {
             text-decoration: underline;
         }
 
-        /* Submit Button */
-        button {
-            background: #fff;
-            color: #000;
-            font-weight: 600;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            border-radius: 3px;
-            font-size: 16px;
-            border: 2px solid transparent;
-            transition: 0.3s ease;
-        }
-
-        button:hover {
-            color: #fff;
-            border-color: #fff;
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        /* Register Section */
-        .register {
-            text-align: center;
-            margin-top: 30px;
-            color: #fff;
+        .main-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 
 <body>
-    <div class="wrapper">
-        <form action="#">
-            <h2>Login</h2>
-
-            <!-- Email Input Field -->
-            <div class="input-field">
-                <input type="email" required>
-                <label>Enter your email</label>
-            </div>
-
-            <!-- Password Input Field -->
-            <div class="input-field">
-                <input type="password" required>
-                <label>Enter your password</label>
-            </div>
-
-            <!-- Remember Me and Forgot Password Section -->
-            <div class="forget">
-                <label for="remember">
-                    <input type="checkbox" id="remember">
-                    <p>Remember me</p>
-                </label>
-                <a href="#">Forgot password?</a>
-            </div>
-
-            <!-- Submit Button -->
-            <button type="submit">Log In</button>
-
-            <!-- Register Link -->
-            <div class="register">
-                <p>Don't have an account? <a href="#">Register</a></p>
-            </div>
-        </form>
+    <!-- Header -->
+    <div class="header">
+        <h1>University Venue Management System</h1>
     </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 sidebar">
+                <h4>Navigation</h4>
+                <a href="#">Dashboard</a>
+                <a href="#">Manage Venues</a>
+                <a href="#">Bookings</a>
+                <a href="#">Reports</a>
+                <a href="#">Settings</a>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 col-lg-10 px-md-4">
+                <div class="main-content">
+                    <h2>Welcome to the Venue Management System</h2>
+                    <p>Here you can manage venues, view bookings, and generate reports easily.</p>
+
+                    <!-- Example Table -->
+                    <h3>Upcoming Bookings</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Venue</th>
+                                <th>Date</th>
+                                <th>Event</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Auditorium</td>
+                                <td>2024-12-20</td>
+                                <td>Workshop</td>
+                                <td><span class="badge bg-success">Confirmed</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Conference Room</td>
+                                <td>2024-12-22</td>
+                                <td>Meeting</td>
+                                <td><span class="badge bg-warning">Pending</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
