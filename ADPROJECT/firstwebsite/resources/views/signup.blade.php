@@ -1,12 +1,10 @@
-@ -1,11 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <title>Glassmorphism Login Form</title>
+    <title>Glassmorphism Signup Form</title>
     <style>
         /* General Reset */
         * {
@@ -94,28 +92,6 @@
             transform: translateY(-120%);
         }
 
-        /* Forgot Password and Remember Me */
-        .forget {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 25px 0 35px 0;
-            color: #fff;
-        }
-
-        #remember {
-            accent-color: #fff;
-        }
-
-        .forget label {
-            display: flex;
-            align-items: center;
-        }
-
-        .forget label p {
-            margin-left: 8px;
-        }
-
         /* Links */
         .wrapper a {
             color: #efefef;
@@ -146,7 +122,7 @@
             background: rgba(255, 255, 255, 0.15);
         }
 
-        /* Register Section */
+        /* Login Section */
         .register {
             text-align: center;
             margin-top: 30px;
@@ -156,10 +132,15 @@
 </head>
 
 <body>
-    <h1>Home</h1>
     <div class="wrapper">
         <form action="#">
-            <h2>Login</h2>
+            <h2>Signup</h2>
+
+            <!-- Name Input Field -->
+            <div class="input-field">
+                <input type="text" required>
+                <label>Enter your name</label>
+            </div>
 
             <!-- Email Input Field -->
             <div class="input-field">
@@ -170,29 +151,24 @@
             <!-- Password Input Field -->
             <div class="input-field">
                 <input type="password" required>
-                <label>Enter your password</label>
+                <label>Create a password</label>
             </div>
 
-            <!-- Remember Me and Forgot Password Section -->
-            <div class="forget">
-                <label for="remember">
-                    <input type="checkbox" id="remember">
-                    <p>Remember me</p>
-                </label>
-                <a href="#">Forgot password?</a>
+            <!-- Confirm Password Input Field -->
+            <div class="input-field">
+                <input type="password" required>
+                <label>Confirm your password</label>
             </div>
 
             <!-- Submit Button -->
-            <button type="submit">Log In</button>
+            <button type="submit">Sign Up</button>
 
-            <!-- Register Link -->
+            <!-- Login Link -->
             <div class="register">
-                <p>Don't have an account? <a href="{{ route('signup') }}">Register</a></p>
+                <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
             </div>
-            
         </form>
     </div>
 </body>
-</html>
 
 </html>
