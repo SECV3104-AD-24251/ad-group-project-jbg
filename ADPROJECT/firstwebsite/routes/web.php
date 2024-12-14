@@ -18,3 +18,4 @@ Route::get('/my-bookings', [VenueController::class, 'showBookings'])->name('my.b
 // Book a venue (secured by auth middleware)
 Route::post('/book-venue/{venueId}', [VenueController::class, 'bookVenue'])->name('book.venue')->middleware('auth');
 
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
