@@ -1,114 +1,32 @@
-@ -1,11 +1,193 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- resources/views/home.blade.php -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venue Management System</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
+@extends('layouts.app')
 
-        .header {
-            background-color: #007bff;
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-        }
+@section('content')
+    <div class="container">
+        <h2>Available Venues</h2>
 
-        .sidebar {
-            background-color: #0056b3;
-            color: white;
-            height: 100vh;
-            padding: 15px;
-        }
+        @foreach($venues as $venue)
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $venue->name }}</h5>
+                    <p class="card-text">{{ $venue->description }}</p>
+                    <p class="card-text">Capacity: {{ $venue->capacity }}</p>
 
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            margin: 10px 0;
-        }
-
-        .sidebar a:hover {
-            text-decoration: underline;
-        }
-
-        .main-content {
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- Header -->
-    <div class="header">
-        <h1>University Venue Management System</h1>
-    </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 sidebar">
-                <h4>Navigation</h4>
-                <a href="#">Dashboard</a>
-                <a href="#">Manage Venues</a>
-                <a href="#">Bookings</a>
-                <a href="#">Reports</a>
-                <a href="#">Settings</a>
-            </nav>
-
-            <!-- Main Content -->
-            <main class="col-md-9 col-lg-10 px-md-4">
-                <div class="main-content">
-                    <h2>Welcome to the Venue Management System</h2>
-                    <p>Here you can manage venues, view bookings, and generate reports easily.</p>
-
-                    <!-- Example Table -->
-                    <h3>Upcoming Bookings</h3>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Venue</th>
-                                <th>Date</th>
-                                <th>Event</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Auditorium</td>
-                                <td>2024-12-20</td>
-                                <td>Workshop</td>
-                                <td><span class="badge bg-success">Confirmed</span></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Conference Room</td>
-                                <td>2024-12-22</td>
-                                <td>Meeting</td>
-                                <td><span class="badge bg-warning">Pending</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <form action="{{ route('book.venue', $venue->id) }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="event_name" class="form-label">Event Name</label>
+                            <input type="text" class="form-control" id="event_name" name="event_name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="booking_date" class="form-label">Booking Date</label>
+                            <input type="date" class="form-control" id="booking_date" name="booking_date" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Book this Venue</button>
+                    </form>
                 </div>
-            </main>
-        </div>
+            </div>
+        @endforeach
     </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
-</html>
+@endsection
