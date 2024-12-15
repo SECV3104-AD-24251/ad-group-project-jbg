@@ -6,7 +6,8 @@ use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\VenueController;
+use App\Http\Controllers\VenueSuggestionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,3 +32,20 @@ Route::delete('subjects/{subject}/assessments/{assessment}', [SubjectController:
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('suggestions', VenueSuggestionController::class);
+});
+
+Route::middleware('auth')->group(function () {
+    // Routes for students to suggest venues
+    Route::resource('venue-suggestions', VenueSuggestionController::class);
+
+    // Routes for lecturers to manage venues
+    Route::resource('venues', VenueController::class);
+
+    Route::get('/venue-suggestions/create', [VenueSuggestionController::class, 'create'])->name('venue-suggestions.create');
+Route::post('/venue-suggestions', [VenueSuggestionController::class, 'store'])->name('venue-suggestions.store');
+
+});

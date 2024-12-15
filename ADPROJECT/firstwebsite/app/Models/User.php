@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -44,5 +45,16 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function suggestedVenues()
+    {
+        return $this->hasMany(VenueSuggestion::class, 'student_id');
+    }
+
+    // For Lecturers: Relationship with Managed Venues
+    public function managedVenues()
+    {
+        return $this->hasMany(Venue::class, 'lecturer_id');
     }
 }
