@@ -39,17 +39,10 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        if($user->can('create', Subject::class)){
-            $lecturers = Lecturer::all(); // Retrieve all lecturers
-            return view('subjects.create', compact('lecturers')); // Pass to view
-        } else {
-            return view('errors.403');
-        }
-        /*
+        
         $lecturers = Lecturer::all(); // Retrieve all lecturers
         return view('subjects.create', compact('lecturers')); // Pass to view
-        */
+        
     }
 
     /**
