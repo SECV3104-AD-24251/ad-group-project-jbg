@@ -1,32 +1,23 @@
-<!-- resources/views/home.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2>Available Venues</h2>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-        @foreach($venues as $venue)
-            <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $venue->name }}</h5>
-                    <p class="card-text">{{ $venue->description }}</p>
-                    <p class="card-text">Capacity: {{ $venue->capacity }}</p>
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-                    <form action="{{ route('book.venue', $venue->id) }}" method="POST">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="event_name" class="form-label">Event Name</label>
-                            <input type="text" class="form-control" id="event_name" name="event_name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="booking_date" class="form-label">Booking Date</label>
-                            <input type="date" class="form-control" id="booking_date" name="booking_date" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Book this Venue</button>
-                    </form>
+                    {{ __('You are logged in!') }}
                 </div>
             </div>
-        @endforeach
+        </div>
     </div>
+</div>
 @endsection

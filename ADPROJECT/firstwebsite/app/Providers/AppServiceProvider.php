@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+use App\Model\Subject;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('isAdmin', function(  $user){
+            return $user->userCategory == 'admin';
+        });
+
+        Gate::define('isStudent', function($user){
+            return $user->userCategory == 'student';
+        });
+
+        Gate::define('isLecturer', function($user){
+            return $user->userCategory == 'lecturer';
+        });
     }
+
+    protected $policies = [
+        Subject::class => SubjectPolicy::class,
+    ];
 }

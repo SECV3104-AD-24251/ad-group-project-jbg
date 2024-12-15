@@ -1,21 +1,33 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\VenueController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\AssessmentController;
+use App\Http\Controllers\UserController;
 
-// Authentication Routes
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-// Home Route - Displays the list of venues (secured by auth middleware)
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Show the user's bookings (secured by auth middleware)
-Route::get('/my-bookings', [VenueController::class, 'showBookings'])->name('my.bookings')->middleware('auth');
+Route::resource('students', StudentController::class);
+Route::resource('lecturers', LecturerController::class);
+Route::resource('subjects', SubjectController::class);
+Route::resource('assessments', AssessmentController::class);
+Route::resource('users', UserController::class);
 
-// Book a venue (secured by auth middleware)
-Route::post('/book-venue/{venueId}', [VenueController::class, 'bookVenue'])->name('book.venue')->middleware('auth');
+Route::post('students/{student}/subjects', [StudentController::class, 'addSubject'])->name('students.addSubject');
+Route::delete('students/{student}/subjects/{subject}', [StudentController::class, 'removeSubject'])->name('students.removeSubject');
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+// Add a subject to a lecturer// Remove a subject from a lecturer
+Route::post('lecturers/{lecturer}/subjects', [LecturerController::class, 'addSubject'])->name('lecturers.addSubject');
+Route::delete('lecturers/{lecturer}/subjects/{subject}', [LecturerController::class, 'removeSubject'])->name('lecturers.removeSubject');
+
+// Add an assessment to a subject// Remove an assessment from a subject
+Route::delete('subjects/{subject}/assessments/{assessment}', [SubjectController::class, 'removeAssessment'])->name('subjects.removeAssessment');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
