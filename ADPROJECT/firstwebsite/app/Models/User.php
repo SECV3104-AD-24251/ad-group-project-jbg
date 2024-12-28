@@ -6,12 +6,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -20,8 +19,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'image',
         'email',
         'password',
+        'gender',
+        'birthDate',
+        'adress',
+        'phone',
+
     ];
 
     /**
@@ -35,26 +40,34 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function Articles(){
+        return $this->hasMany(Article::class );
     }
 
-    public function suggestedVenues()
-    {
-        return $this->hasMany(VenueSuggestion::class, 'student_id');
+    public function Courses(){
+        return $this->hasMany(Course::class );
     }
 
-    // For Lecturers: Relationship with Managed Venues
-    public function managedVenues()
-    {
-        return $this->hasMany(Venue::class, 'lecturer_id');
+    public function coaches(){
+        return $this->hasMany(coach::class );
     }
+
+    public function demandbecoaches(){
+        return $this->hasMany(demandbecoach::class );
+    }
+
+    public function comments(){
+        return $this->hasMany(comment::class );
+    }
+
+    
+
 }

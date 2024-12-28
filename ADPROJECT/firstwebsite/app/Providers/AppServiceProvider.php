@@ -3,38 +3,29 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Gate;
-use App\Model\Subject;
+use Illuminate\Pagination\Paginator;
+
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
+     *
+     * @return void
      */
-    public function register(): void
+    public function register()
     {
         //
     }
 
     /**
      * Bootstrap any application services.
+     *
+     * @return void
      */
-    public function boot(): void
+    public function boot()
     {
-        Gate::define('isAdmin', function(  $user){
-            return $user->userCategory == 'admin';
-        });
-
-        Gate::define('isStudent', function($user){
-            return $user->userCategory == 'student';
-        });
-
-        Gate::define('isLecturer', function($user){
-            return $user->userCategory == 'lecturer';
-        });
+        //
+        Paginator::useBootstrap();
     }
-
-    protected $policies = [
-        Subject::class => SubjectPolicy::class,
-    ];
 }
