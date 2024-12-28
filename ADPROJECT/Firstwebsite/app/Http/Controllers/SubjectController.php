@@ -14,11 +14,10 @@ class SubjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    
+
     public function index()
     {
-        $user = Auth::user();
-        if ($user->can('viewAny', Subject::class)) {
+        if (Gate::allows('viewAny', Subject::class)) {
             $subjects = Subject::all();
             return view('subjects.index', compact('subjects'));
         } else {
@@ -39,10 +38,10 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        
+
         $lecturers = Lecturer::all(); // Retrieve all lecturers
         return view('subjects.create', compact('lecturers')); // Pass to view
-        
+
     }
 
     /**
@@ -61,7 +60,7 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
-        
+
         return view('subjects.show', compact('subject'));
 
     }
