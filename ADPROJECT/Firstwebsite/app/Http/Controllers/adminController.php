@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\coach;
+use App\Models\venue;
 use App\Models\Course;
 use App\Mail\TestEmail;
 use Illuminate\Http\Request;
-use App\Models\demandbecoach;
+use App\Models\demandbevenue;
 use Illuminate\Support\Facades\Mail;
 
 class adminController extends Controller
@@ -20,8 +20,8 @@ class adminController extends Controller
     public function index()
     {
         // get data orderBy('created_at', 'desc') and where status == pending and paginate
-        $data = demandbecoach::orderBy('created_at', 'desc')->where('status', 'pending')->paginate(10);
-        return view('admin.acceptcoach', compact('data'));
+        $data = demandbevenue::orderBy('created_at', 'desc')->where('status', 'pending')->paginate(10);
+        return view('admin.acceptvenue', compact('data'));
         //
     }
 
@@ -58,16 +58,16 @@ class adminController extends Controller
         //
     }
 
-    public function acceptcoach($id)
+    public function acceptvenue($id)
     {
-        $data = demandbecoach::find($id);
+        $data = demandbevenue::find($id);
         $data->status = "accepted";
         $data->save();
         // send notification email to user that his request has been accepted
 
 
 
-        return redirect()->back()->with('success', 'Coach accepted successfully');
+        return redirect()->back()->with('success', 'venue accepted successfully');
     }
 
     /**
@@ -83,10 +83,10 @@ class adminController extends Controller
     public function acceptandemailing(Request $request)
     {
 
-        $data = demandbecoach::find($request->id);
+        $data = demandbevenue::find($request->id);
         $data->status = "accepted";
         $data->save();
-        // add user to coach table
+        // add user to venue table
         $inputs = $request->all();
         $inputs['name'] = $data->name;
         $inputs['image'] = $data->image;
@@ -97,33 +97,33 @@ class adminController extends Controller
         $inputs['status'] = "active";
         $inputs['yearsofexperience'] = $data->yearsofexperience;
         $inputs['rating'] = 0;
-        $inputs['user_id'] = $data->coach_id;
-        coach::create($inputs);
+        $inputs['user_id'] = $data->venue_id;
+        venue::create($inputs);
 
-        demandbecoach::destroy($request->id);
+        demandbevenue::destroy($request->id);
 
         // update role user by id
-        $user = User::find($data->coach_id);
-        $user->role = "coach";
+        $user = User::find($data->venue_id);
+        $user->role = "venue";
         $user->save();
-        
+
         // send notification email to user that his request has been accepted
         $mailData = [
             "name" => "$data->name",
             "dob" => "12/12/1990",
             'image' => 'https://media.tenor.com/2xfw9AtV19EAAAAS/hired-excited.gif',
             'button' => '1',
-            "body" => "you are accepted as a coach",
+            "body" => "you are accepted as a venue",
         ];
-    
+
         Mail::to("$data->email")->send(new TestEmail($mailData));
-    
-        return redirect()->back()->with('success', 'Coach accepted successfully');
+
+        return redirect()->back()->with('success', 'venue accepted successfully');
     }
 
-    public function rejectcoach(Request $request)
+    public function rejectvenue(Request $request)
     {
-        $data = demandbecoach::find($request->id);
+        $data = demandbevenue::find($request->id);
         $data->status = "rejected";
         $data->save();
         // send notification email to user that his request has been rejected
@@ -132,13 +132,13 @@ class adminController extends Controller
             "dob" => "12/12/1990",
             'image' => 'https://media.tenor.com/qn-45RI4FNoAAAAd/request-denied-tom-welling.gif',
             'button' => '1',
-            "body" => "you are rejected as a coach",
+            "body" => "you are rejected as a venue",
         ];
-    
+
         Mail::to("$data->email")->send(new TestEmail($mailData));
-        return redirect()->back()->with('delete', 'Coach rejected successfully');
+        return redirect()->back()->with('delete', 'venue rejected successfully');
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -157,22 +157,22 @@ class adminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showallcoaches()
+    public function showallvenuees()
     {
-        $data = coach::orderBy('created_at', 'desc')->paginate(999);
-        return view('admin.showallcoaches', compact('data'));
+        $data = venue::orderBy('created_at', 'desc')->paginate(999);
+        return view('admin.showallvenuees', compact('data'));
     }
     public function destroy($id)
     {
-        // find coach by user_id
-        $coach = coach::where('user_id', $id)->first();
-        // delete coach
-        $coach->delete();
+        // find venue by user_id
+        $venue = venue::where('user_id', $id)->first();
+        // delete venue
+        $venue->delete();
         // update role user by id
         $user = User::find($id);
         $user->role = "user";
         $user->save();
-        return redirect()->back()->with('delete', 'Coach deleted successfully');
+        return redirect()->back()->with('delete', 'venue deleted successfully');
     }
 
     public function showCourses()

@@ -9,17 +9,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DaysController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\adminController;
-use App\Http\Controllers\CoachController;
+use App\Http\Controllers\venueController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DemandbecoachController;
+use App\Http\Controllers\DemandbevenueController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes 
+| Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -29,7 +29,7 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 */
 
 
-// ga3 satat bnat nass 
+// ga3 satat bnat nass
 
 Route::get('/', function () {
     return view('welcome');
@@ -68,8 +68,8 @@ Route::middleware(['auth'])->group(function () {
 Route::delete('/profile', [userInfo::class, 'destroy'])->name('profile.destroy');
 // user routes
 Route::middleware(['isUser'])->group(function () {
-Route::get('/quiz', function() { return view('user.quiz');})->name('quiz'); 
-Route::post('/quizend', [userInfo::class, 'quizend'])->name('quizzdone');  
+Route::get('/quiz', function() { return view('user.quiz');})->name('quiz');
+Route::post('/quizend', [userInfo::class, 'quizend'])->name('quizzdone');
 // Route::get('/dashboard',[userInfo::class, 'Dashboarding'])->name('dashboard');
 Route::get('/dashboard/profile', function() { return view('user.profile'); })->name('user.profile');
 Route::get('/dashboard', [userInfo::class , 'index'])->name('dashboard');
@@ -77,53 +77,53 @@ Route::get('/dashboard/courses', [CourseController::class , 'index'])->name('sea
 Route::get('/profile', [userInfo::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [userInfo::class, 'update'])->name('profile.update');
 Route::get('/dashboard/course', [CourseController::class, 'search'])->name('user.searchcourse');
-Route::get('/dashboard/coaches',[CoachController::class, 'index'])->name('searchCoaches');
-Route::get('/dashboard/coach/{id}',[CoachController::class, 'show'])->name('showacoach');
-Route::post('/dashboard/coach/book',[CoachController::class, 'store'])->name('booking');
-Route::post('/dashboard/coach/search',[CoachController::class, 'search'])->name('searchingfoacoach');
+Route::get('/dashboard/venuees',[venueController::class, 'index'])->name('searchvenuees');
+Route::get('/dashboard/venue/{id}',[venueController::class, 'show'])->name('showavenue');
+Route::post('/dashboard/venue/book',[venueController::class, 'store'])->name('booking');
+Route::post('/dashboard/venue/search',[venueController::class, 'search'])->name('searchingfoavenue');
 Route::get('/dashboard/course/{id}',[CourseController::class, 'show'])->name('viewCourse');
-Route::post('/dashboard/applycoaching',[DemandbecoachController::class, 'store'])->name('applycoaching');
-Route::get('/dashboard/applycoaching',[DemandbecoachController::class, 'index'])->name('applycoachingindex');
+Route::post('/dashboard/applyvenueing',[DemandbevenueController::class, 'store'])->name('applyvenueing');
+Route::get('/dashboard/applyvenueing',[DemandbevenueController::class, 'index'])->name('applyvenueingindex');
 Route::post('/dashboard/addcpmment', [CommentController::class ,'store'])->name('addcomment');
 Route::post('/dashboard/deletecomment/}', [CommentController::class ,'deleteComment'])->name('deletecomment');
 });
 // admin routes
 Route::middleware(['isAdmin'])->group(function () {
-    Route::get('/admin',[adminController::class, 'index'])->name('acceptcoachh');
-    Route::get('/admin/coaches',[adminController::class, 'acceptcoach'])->name('acceptcoaching');
-    Route::post('/admin/rejectcoach',[adminController::class, 'rejectcoach'])->name('rejectcoach');
-    Route::post('/admin/acceptcoach',[adminController::class, 'acceptandemailing'])->name('acceptcoach');
-    Route::get('/admin/allcoaches',[adminController::class, 'showallcoaches'])->name('showcoach');
-    Route::get('/admin/coaches/{id}',[adminController::class, 'destroy'])->name('deletecoach');
+    Route::get('/admin',[adminController::class, 'index'])->name('acceptvenueh');
+    Route::get('/admin/venuees',[adminController::class, 'acceptvenue'])->name('acceptvenueing');
+    Route::post('/admin/rejectvenue',[adminController::class, 'rejectvenue'])->name('rejectvenue');
+    Route::post('/admin/acceptvenue',[adminController::class, 'acceptandemailing'])->name('acceptvenue');
+    Route::get('/admin/allvenuees',[adminController::class, 'showallvenuees'])->name('showvenue');
+    Route::get('/admin/venuees/{id}',[adminController::class, 'destroy'])->name('deletevenue');
     Route::get('/admin/courses',[adminController::class, 'showCourses'])->name('showCourses');
     Route::get('/admin/course/{id}',[adminController::class, 'deleteCourse'])->name('deleteCourse');
-   
+
 });
 
 
-// coach routes
-Route::middleware(['isCoach'])->group(function () {
-    Route::get('/coach',[coachController::class, 'dashboard'])->name('dashboard.coach');
-    Route::get('/coach/accept/{id}',[coachController::class, 'acceptBooking'])->name('accept');
-    Route::get('/coach/reject/{id}',[coachController::class, 'rejectBooking'])->name('reject');
-    Route::get('/coach/addcourse',[coachController::class, 'addcourse'])->name('addcourse');
-    Route::get('/coach/mycourses',[coachController::class, 'mycourses'])->name('mycourses');
-    Route::post('/coach/addcourse',[coachController::class, 'addacourse'])->name('storecourse');
-    Route::get('/coach/mycourses/{id}',[coachController::class, 'deletecourse'])->name('deletecourse');
-    Route::post('/coach/mycourses/edit',[coachController::class, 'editcourse'])->name('editcourse');
-    Route::get('/coach/editprofile',[coachController::class, 'editcoach'])->name('edittheprofile');
-    Route::post('/coach/editprofile',[coachController::class, 'updatecoach'])->name('updatecoach');
+// venue routes
+Route::middleware(['isvenue'])->group(function () {
+    Route::get('/venue',[venueController::class, 'dashboard'])->name('dashboard.venue');
+    Route::get('/venue/accept/{id}',[venueController::class, 'acceptBooking'])->name('accept');
+    Route::get('/venue/reject/{id}',[venueController::class, 'rejectBooking'])->name('reject');
+    Route::get('/venue/addcourse',[venueController::class, 'addcourse'])->name('addcourse');
+    Route::get('/venue/mycourses',[venueController::class, 'mycourses'])->name('mycourses');
+    Route::post('/venue/addcourse',[venueController::class, 'addacourse'])->name('storecourse');
+    Route::get('/venue/mycourses/{id}',[venueController::class, 'deletecourse'])->name('deletecourse');
+    Route::post('/venue/mycourses/edit',[venueController::class, 'editcourse'])->name('editcourse');
+    Route::get('/venue/editprofile',[venueController::class, 'editvenue'])->name('edittheprofile');
+    Route::post('/venue/editprofile',[venueController::class, 'updatevenue'])->name('updatevenue');
     // update route
-    Route::post('/coach/mycourses/update',[coachController::class, 'updatecourse'])->name('updatecourse');
-    
-    
-   
+    Route::post('/venue/mycourses/update',[venueController::class, 'updatecourse'])->name('updatecourse');
+
+
+
 });
 // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // route::get('show/{id}', [FoodController::class, 'showw'])->name('showw');
 });
 
 // admin routes
-Route::get('/admin/coaches', [adminController::class, 'redirectacceptcoachview'])->name('admin.coaches');
+Route::get('/admin/venuees', [adminController::class, 'redirectacceptvenueview'])->name('admin.venuees');
 
 require __DIR__.'/auth.php';

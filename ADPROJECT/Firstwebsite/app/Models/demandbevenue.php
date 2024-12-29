@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class demandbecoach extends Model
+class demandbevenue extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        
+
         "sport",
         "name",
         "email",
@@ -19,15 +19,15 @@ class demandbecoach extends Model
         "location",
         "price",
         "yearsofexperience",
-        "coach_id",
+        "venue_id",
         "status",
-                                      	
+
 
     ];
 
     public function user(){
-        return $this->belongsTo(User::class, 'coach_id');
+        return $this->belongsTo(User::class, 'venue_id');
     }
 
-   
+
 }

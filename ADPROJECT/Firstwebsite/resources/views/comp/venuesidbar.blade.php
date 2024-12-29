@@ -146,7 +146,12 @@
                 </a>
             </li>
             <div class="ms-5">
-                <img src="{{ asset('images/—Pngtree—businessman user avatar wearing suit_8385663.png') }}"
+                <img src="
+                {{-- if theres a image or not --}}
+                @if (Auth::user()->image) {{ asset('images/' . Auth::user()->image) }}
+                @else
+                {{ asset('images/vectimg.png') }} @endif
+                  "
                     class="rounded-circle" width="100" height="100" alt="">
 
             </div>
@@ -154,15 +159,31 @@
                 <p class="text-white"> 👋 {{ Auth::user()->name }}</p>
             </div>
             <li>
-                <a href="{{ route('acceptvenueh') }}"><i class="bi bi-person-check"></i> Accept venues</a>
-            </li>
-            <li>
-                <a href="{{ route('showvenue') }}"><i class="bi bi-trash3-fill"></i> Delete venues</a>
-            </li>
-            <li>
-                <a href="{{ route('showCourses') }}"><i class="bi bi-vector-pen"></i> Delete Course </a>
+                <a href="{{ route('edittheprofile') }}"><i class="bi bi-person-circle"></i> Profile</a>
             </li>
 
+            <li>
+                <a href="{{ route('dashboard.venue') }}"><i class="bi bi-calendar-check"></i> Accept Booking</a>
+            </li>
+            <li>
+                <a href="{{ route('mycourses') }}"><i class="bi bi-pencil-square"></i> Your Course</a>
+            </li>
+            {{-- <li>
+                  <a href="{{route('user.articles')}}"><i class="bi bi-body-text"></i> Articles</a>
+      </li> --}}
+            {{-- <li>
+                <a href="{{route('user.music')}}"><i class="bi bi-music-note-beamed"></i> Music</a>
+      </li> --}}
+
+            {{-- <li>
+                  <a href="#"><i class="bi bi-chat-left-dots-fill"></i> Chat</a>
+              </li> --}}
+            <li>
+
+            <li>
+                <a href="404"><i class="bi bi-question-circle"></i> Support</a>
+            </li>
+        </ul>
     </div>
     <!-- /#sidebar-wrapper -->
 

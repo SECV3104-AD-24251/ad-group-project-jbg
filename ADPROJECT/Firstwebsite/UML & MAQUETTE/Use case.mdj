@@ -379,7 +379,7 @@
 											"top": 365,
 											"width": 78,
 											"height": 13,
-											"text": "Coach"
+											"text": "venue"
 										},
 										{
 											"_type": "LabelView",
@@ -739,7 +739,7 @@
 											"top": 42.5,
 											"width": 109,
 											"height": 13,
-											"text": "booking coach"
+											"text": "booking venue"
 										},
 										{
 											"_type": "LabelView",
@@ -4126,7 +4126,7 @@
 											"top": 526,
 											"width": 86,
 											"height": 13,
-											"text": "Accept Coach"
+											"text": "Accept venue"
 										},
 										{
 											"_type": "LabelView",
@@ -4317,7 +4317,7 @@
 											"top": 590,
 											"width": 86,
 											"height": 13,
-											"text": "Decline coach"
+											"text": "Decline venue"
 										},
 										{
 											"_type": "LabelView",
@@ -6203,7 +6203,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGHdMxxsxr17LQ="
 					},
-					"name": "Coach",
+					"name": "venue",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -6385,7 +6385,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGHdMxxsxr17LQ="
 					},
-					"name": "booking coach",
+					"name": "booking venue",
 					"ownedElements": [
 						{
 							"_type": "UMLInclude",
@@ -6431,7 +6431,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGHdMxxsxr17LQ="
 					},
-					"name": "Accept Coach",
+					"name": "Accept venue",
 					"ownedElements": [
 						{
 							"_type": "UMLInclude",
@@ -6454,7 +6454,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGHdMxxsxr17LQ="
 					},
-					"name": "Decline coach",
+					"name": "Decline venue",
 					"ownedElements": [
 						{
 							"_type": "UMLInclude",

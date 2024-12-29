@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ISPORT - Admin</title>
+    <title>Venue - Admin</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -74,8 +74,8 @@
                     <table class="table align-middle mb-0 bg-white">
                         <thead class="bg-light">
                             <tr>
-                                <th>Name</th>
-                                <th>author</th>
+                                <th>Venue Name</th>
+                                <th>Type</th>
                                 <th>Description</th>
                                 <th>Actions</th>
                             </tr>
@@ -83,8 +83,20 @@
                         <tbody>
                             @foreach ($data as $item)
                                 <tr>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->author }}</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ URL::asset('images') }}{{ '/' . $item->image }}" alt=""
+                                                style="width: 45px; height: 45px" class="rounded-circle" />
+                                            <div class="ms-3">
+                                                <p class="fw-bold mb-1">{{ $item->name }}</p>
+                                                <p class="text-muted mb-0">{{ $item->location }}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="fw-normal mb-1">{{ $item->sport }}</p>
+                                        <p class="text-muted mb-0">{{ $item->yearsofexperience }} Years</p>
+                                    </td>
                                     <td>
                                         {{-- <button class="btn btn-sm btn-outline-success"><i class="bi bi-eye-fill"></i> Read</button> --}}
                                         <!-- Button trigger modal -->
@@ -113,9 +125,6 @@
 
                                                             <h5 class="text-success">Description :</h5>
                                                             <p class="text-muted">{{ $item->description }} </p>
-                                                            <h5 class="text-success">link :</h5>
-                                                            <p class="text-muted">{{ $item->link }} </p>
-
                                                         </label>
 
                                                     </div>
@@ -127,9 +136,13 @@
                                             </div>
                                         </div>
                                     </td>
+
                                     <td>
-                                        <a href="{{ route('deleteCourse', $item->id) }}"
-                                            class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i> Delete</a>
+
+                                        <a href="{{ route('deletevenue', $item->user_id) }}"
+                                            class="btn btn-sm btn-sm btn-danger"><i class="bi bi-trash3-fill"></i>
+                                            DELETE</a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -137,8 +150,15 @@
                         </tbody>
 
                     </table>
+                    <style>
+                        .pagination {
+                            background: white;
 
-                    {{-- <div cdelass="col">
+                        }
+                    </style>
+                    {{ $data->links() }}
+
+                    {{-- <div class="col">
               <div class="card h-100">
                 <img src="https://cdn.becomeopedia.com/wp-content/uploads/Sports-venue.jpg" class="card-img-top" alt="Los Angeles Skyscrapers"/>
                 <div class="card-body">

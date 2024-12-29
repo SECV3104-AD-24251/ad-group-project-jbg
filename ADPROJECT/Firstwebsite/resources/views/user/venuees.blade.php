@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ISPORT - Courses</title>
+    <title>ISPORT - venuees</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -45,10 +45,10 @@
             <div class="row mb-4">
 
                 <div class="mt-2">
-                    <form action="{{ route('user.searchcourse') }}" method="get">
+                    <form action="{{ route('searchingfoavenue') }}" method="post">
                         <div class="input-group">
                             @csrf
-                            @method('get')
+                            @method('post')
                             <input type="search" name="search" class="form-control rounded" placeholder="Search"
                                 aria-label="Search" aria-describedby="search-addon" />
                             <button type="submit" class="btn btn-outline-success">search</button>
@@ -57,47 +57,57 @@
             </div>
             {{-- h1 in green top venuees --}}
             {{-- --}}
-            <div class="mt-4">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    @if (count($data) == 0)
+            @if (count($data) > 0)
+                <div class="mt-4">
+
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        @foreach ($data as $item)
+                            <div class="col ">
+                                <div class="card ">
+
+                                    <a href="/dashboard/venue/{{ $item->id }}">
+
+                                        <img src="{{ URL::asset("images/$item->image") }}" class="card-img-top"
+                                            alt="Skyscrapers" />
+
+                                    </a>
+
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-0">{{ $item->name }}</h5>
+                                        <ul class="mb-0 mt-0 list-unstyled d-flex flex-row" style="color: #1B7B2C;">
+
+                                            <p class="card-text text-muted">
+                                                {{ $item->sport }}
+                                            </p>
+                                    </div>
+                                    {{-- <div class="card-footer">
+                <small class="text-muted">Online 3 mins ago</small>
+              </div> --}}
+                                    <div class="card-footer text-success "> <a
+                                            href="/dashboard/venue/{{ $item->id }}"
+                                            class="btn btn-success btn-rounded btn-block btn-sm w-100"><i
+                                                class="bi bi-alarm"></i> BOOK NOW !</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
                         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
                         <script>
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: ' No Courses Found!',
+                                text: ' No venue Found!',
                             })
                         </script>
-                    @else
-                        @foreach ($data as $item)
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img src="{{ asset('images/' . $item->image) }}" class="card-img-top"
-                                        alt="Skyscrapers" />
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $item->name }}</h5>
-                                        <p class="card-text">
-                                            {{ $item->level }} </p>
-                                    </div>
-                                    <div class="card-footer d-flex">
 
-                                        <small class="text-muted"><i class="bi bi-pencil-square "></i>
-                                            {{ $item->author }} </small>
-                                        <a href="{{ route('viewCourse', $item->id) }}"
-                                            class="btn btn-success btn-sm ms-auto">View Course</a>
+            @endif
 
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                        {{-- --}}
-                </div>
-            </div>
         </div>
     </div>
-    @endif
+
     </div>
     {{-- top top courses --}}
 

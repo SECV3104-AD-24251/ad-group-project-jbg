@@ -56,18 +56,18 @@ class User extends Authenticatable
         return $this->hasMany(Course::class );
     }
 
-    public function coaches(){
-        return $this->hasMany(coach::class );
+    public function venuees(){
+        return $this->hasMany(venue::class );
     }
 
-    public function demandbecoaches(){
-        return $this->hasMany(demandbecoach::class );
+    public function demandbevenuees(){
+        return $this->hasMany(demandbevenue::class );
     }
 
     public function comments(){
         return $this->hasMany(comment::class );
     }
 
-    
+
 
 }

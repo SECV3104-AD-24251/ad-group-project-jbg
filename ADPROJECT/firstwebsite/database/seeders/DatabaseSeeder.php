@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\coach;
+use App\Models\venue;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -32,23 +32,23 @@ class DatabaseSeeder extends Seeder
         'password' => bcrypt('123456789'), // Replace 'securepassword' with your preferred password
         ]);
 
-        // making coach users
+        // making venue users
         \App\Models\User::factory()->create([
-            'name' => 'COACH',
-            'email' => 'coach@coach.com',
-            'role' => 'coach',
-            'password' => bcrypt('coach'),
+            'name' => 'venue',
+            'email' => 'venue@venue.com',
+            'role' => 'venue',
+            'password' => bcrypt('venue'),
         ]);
-        // filling the coach table
+        // filling the venue table
 
         \App\Models\User::factory()->create([
-            'name' => 'COACH 1',
-            'email' => 'coach@gmail.com',
-            'role' => 'coach',
+            'name' => 'venue 1',
+            'email' => 'venue@gmail.com',
+            'role' => 'venue',
             'password' => bcrypt('123456789'),
         ]);
         // f
-        coach::factory()->create([
+        venue::factory()->create([
             'name' => 'Zakaria El Azzouzi',
             'user_id' => 2,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',

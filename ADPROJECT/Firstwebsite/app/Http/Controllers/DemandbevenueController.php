@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\demandbecoach;
+use App\Models\demandbevenue;
 use Illuminate\Http\Request;
 
-class DemandbecoachController extends Controller
+class DemandbevenueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class DemandbecoachController extends Controller
     public function index()
     {
         // get data where user == auth()->user()->id
-        $data = demandbecoach::where('coach_id', auth()->user()->id)->get();
-        return view('user.beacoach', compact('data'));
+        $data = demandbevenue::where('venue_id', auth()->user()->id)->get();
+        return view('user.beavenue', compact('data'));
     }
 
     /**
@@ -40,16 +40,16 @@ class DemandbecoachController extends Controller
         //
         // validate
         $request->validate([
-            
-            
+
+
             'description' => 'required',
         ]);
         $inputs = $request->all();
         $inputs['name'] = auth()->user()->name;
         $inputs['image'] = auth()->user()->image;
         $inputs['email'] = auth()->user()->email;
-        $inputs['coach_id'] = auth()->user()->id;
-        demandbecoach::create($inputs);
+        $inputs['venue_id'] = auth()->user()->id;
+        demandbevenue::create($inputs);
         return redirect()->back()->with('success', 'Your request has been sent successfully');
 
     }
@@ -57,10 +57,10 @@ class DemandbecoachController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\demandbecoach  $demandbecoach
+     * @param  \App\Models\demandbevenue  $demandbevenue
      * @return \Illuminate\Http\Response
      */
-    public function show(demandbecoach $demandbecoach)
+    public function show(demandbevenue $demandbevenue)
     {
         //
     }
@@ -68,10 +68,10 @@ class DemandbecoachController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\demandbecoach  $demandbecoach
+     * @param  \App\Models\demandbevenue  $demandbevenue
      * @return \Illuminate\Http\Response
      */
-    public function edit(demandbecoach $demandbecoach)
+    public function edit(demandbevenue $demandbevenue)
     {
         //
     }
@@ -80,10 +80,10 @@ class DemandbecoachController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\demandbecoach  $demandbecoach
+     * @param  \App\Models\demandbevenue  $demandbevenue
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, demandbecoach $demandbecoach)
+    public function update(Request $request, demandbevenue $demandbevenue)
     {
         //
     }
@@ -91,10 +91,10 @@ class DemandbecoachController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\demandbecoach  $demandbecoach
+     * @param  \App\Models\demandbevenue  $demandbevenue
      * @return \Illuminate\Http\Response
      */
-    public function destroy(demandbecoach $demandbecoach)
+    public function destroy(demandbevenue $demandbevenue)
     {
         //
     }

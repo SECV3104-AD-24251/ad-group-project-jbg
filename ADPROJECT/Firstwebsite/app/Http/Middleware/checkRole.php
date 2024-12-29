@@ -16,7 +16,7 @@ class checkRole
      */
     public function handle(Request $request, Closure $next)
     {
-        // check role if user or coach or admin
+        // check role if user or venue or admin
         if (auth()->user()->role == 'user') {
             return $next($request);
         } else {

@@ -63,7 +63,7 @@
 											"top": 263,
 											"width": 214,
 											"height": 13,
-											"text": "Coach"
+											"text": "venue"
 										},
 										{
 											"_type": "LabelView",
@@ -577,7 +577,7 @@
 											"top": 249,
 											"width": 199,
 											"height": 13,
-											"text": "+removeCoach()",
+											"text": "+removevenue()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1328,7 +1328,7 @@
 											"top": 675,
 											"width": 231,
 											"height": 13,
-											"text": "+coach_id",
+											"text": "+venue_id",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4237,7 +4237,7 @@
 											"top": 180,
 											"width": 223,
 											"height": 13,
-											"text": "+coach_id",
+											"text": "+venue_id",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4869,7 +4869,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Coach",
+					"name": "venue",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -5261,7 +5261,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGF8ktaKSTG7/o="
 							},
-							"name": "removeCoach"
+							"name": "removevenue"
 						},
 						{
 							"_type": "UMLOperation",
@@ -5630,7 +5630,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGF8ldx1CYSsQc="
 							},
-							"name": "coach_id",
+							"name": "venue_id",
 							"type": ""
 						}
 					],
@@ -5990,7 +5990,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGHfzH9QJ/Q3cM="
 							},
-							"name": "coach_id"
+							"name": "venue_id"
 						}
 					]
 				}
