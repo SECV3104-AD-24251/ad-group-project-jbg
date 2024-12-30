@@ -37,9 +37,9 @@
             </div>
             <div class="col-10 col-lg-3 col-md-3 mb-3">
                 <div class="card  mb-3 ">
-                    <img src="" class="card-img-top " alt="Fissure in Sandstone" />
+                    <img src="images/RAZIQ.jpg" class="card-img-top " alt="Fissure in Sandstone" />
                     <div class="card-body">
-                        <h5 class="card-title text-success">Raziq Fitri</h5>
+                        <h5 class="card-title text-success">RAZIQ FITRI</h5>
                         <h6 class="card-title text-mute">Student</h6>
                         <p class="card-text text-dark">Study in UTM</p>
                         <a href="#!" class="btn btn-success btn-sm"><i class="bi bi-github text-white"></i>
@@ -54,9 +54,9 @@
                 <div class="card  mb-3 ">
                     <img src="" class="card-img-top " alt="Fissure in Sandstone" />
                     <div class="card-body">
-                        <h5 class="card-title text-success">FAREZY RAHMAN</h5>
+                        <h5 class="card-title text-success">RAIHAN</h5>
                         <h6 class="card-title text-mute">Student</h6>
-                        <p class="card-text text-dark">3rd year Student in Course Computer Graphic in UTM, the next
+                        <p class="card-text text-dark">2rd year Student in Course Computer Graphic in UTM, the next
                             Graphic software Developer</p>
                         <a href="#!" class="btn btn-success btn-sm"><i class="bi bi-github text-white"></i>
                             Github</a>
