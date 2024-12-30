@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ISPORT - Coaches</title>
+    <title>Venue - Coaches</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="{{URL::asset('images/icon.png')}}" type="image/png">
+    <link rel="icon" href="{{ URL::asset('images/icon.png') }}" type="image/png">
 </head>
 
 <body style="background-color: #efefef;">
@@ -31,7 +31,7 @@
                         </svg></i></a>
 
                     {{-- <h1>Welcome to Your Coaching Dashboard</h1>
-                
+
                 <p>From here, you can manage your coaching schedule, review your progress, and book new coaching sessions or online courses. Use the menu on the left to access different parts of your dashboard, or click on the quick links to jump to specific actions. We hope you find our platform helpful in achieving your sports goals, and we look forward to seeing your progress!</p> --}}
                 </div>
 
@@ -58,7 +58,7 @@
                                     <div class="col me-2">
                                         <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span><i
                                                     class="bi bi-hourglass-split"></i> Pending </span></div>
-                                        <div class="text-dark fw-bold h5 mb-0"><span>{{count($pending)}}</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0"><span>{{ count($pending) }}</span></div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                                 </div>
@@ -72,7 +72,7 @@
                                     <div class="col me-2">
                                         <div class="text-uppercase text-success fw-bold text-xs mb-1"><span><i
                                                     class="bi bi-calendar-check-fill"></i> Accepted</span></div>
-                                        <div class="text-dark fw-bold h5 mb-0"><span>{{count($accepted)}}</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0"><span>{{ count($accepted) }}</span></div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
                                 </div>
@@ -88,7 +88,8 @@
                                                     class="bi bi-x-circle-fill"></i> Rejected</span></div>
                                         <div class="row g-0 align-items-center">
                                             <div class="col-auto">
-                                                <div class="text-dark fw-bold h5 mb-0"><span>{{count($rejected)}}</span>
+                                                <div class="text-dark fw-bold h5 mb-0">
+                                                    <span>{{ count($rejected) }}</span>
                                                 </div>
                                             </div>
 
@@ -107,7 +108,7 @@
                                     <div class="col me-2">
                                         <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span><i
                                                     class="bi bi-bookmark-fill"></i> All Books</span></div>
-                                        <div class="text-dark fw-bold h5 mb-0"><span>{{count($bookings)}}</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0"><span>{{ count($bookings) }}</span></div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                                 </div>
@@ -127,27 +128,27 @@
                         </thead>
                         <tbody>
                             @foreach ($pending as $item)
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
 
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-
-                                        <div class="ms-3">
-                                            <p class="fw-bold mb-1">{{$item->name}}</p>
-                                            <p class="text-muted mb-0">{{$item->phone}}</p>
+                                            <div class="ms-3">
+                                                <p class="fw-bold mb-1">{{ $item->name }}</p>
+                                                <p class="text-muted mb-0">{{ $item->phone }}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>{{$item->date}}</td>
-                                <td>{{$item->time}}</td>
-                                <td>
-                                    <div class="d-flex">
-                                        <a href="{{route('accept',$item->id)}}" class="btn btn-success btn-sm me-2"><i
-                                                class="bi bi-calendar-check-fill"></i> Accept</a>
-                                        <a href="{{route('reject',$item->id)}}" class="btn btn-danger btn-sm"><i
-                                                class="bi bi-x-circle-fill"></i> Reject</a>
-                                    </div>
-                            </tr>
+                                    </td>
+                                    <td>{{ $item->date }}</td>
+                                    <td>{{ $item->time }}</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <a href="{{ route('accept', $item->id) }}"
+                                                class="btn btn-success btn-sm me-2"><i
+                                                    class="bi bi-calendar-check-fill"></i> Accept</a>
+                                            <a href="{{ route('reject', $item->id) }}" class="btn btn-danger btn-sm"><i
+                                                    class="bi bi-x-circle-fill"></i> Reject</a>
+                                        </div>
+                                </tr>
                             @endforeach
 
                 </div>
@@ -158,8 +159,8 @@
             <!-- /#wrapper -->
             @include('comp.jq')
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-                crossorigin="anonymous"></script>
+                integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+            </script>
 
 </body>
 

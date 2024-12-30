@@ -5,24 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ISPORT - Courses</title>
+    <title>Venue - Courses</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="{{URL::asset('images/icon.png')}}" type="image/png">
+    <link rel="icon" href="{{ URL::asset('images/icon.png') }}" type="image/png">
 </head>
 
 <body style="background-color: #efefef;">
 
     @include('comp.userNav')
     @include('comp.sidbar')
-    @if (Auth::user()->gender == '' || Auth::user()->quizstatus == '0' )
-    <script>
-        window.location = "/dashboard";
-    </script>
-
+    @if (Auth::user()->gender == '' || Auth::user()->quizstatus == '0')
+        <script>
+            window.location = "/dashboard";
+        </script>
     @endif
 
     <div id="page-content-wrapper">
@@ -37,7 +36,7 @@
                         </svg></i></a>
 
                     {{-- <h1>Welcome to Your Coaching Dashboard</h1>
-                
+
                 <p>From here, you can manage your coaching schedule, review your progress, and book new coaching sessions or online courses. Use the menu on the left to access different parts of your dashboard, or click on the quick links to jump to specific actions. We hope you find our platform helpful in achieving your sports goals, and we look forward to seeing your progress!</p> --}}
                 </div>
 
@@ -60,24 +59,24 @@
                 <center>
                     <div class="col-7">
                         <div class="card">
-                            <img src="{{asset('images/'.$data->image)}}" class="card-img-top"
+                            <img src="{{ asset('images/' . $data->image) }}" class="card-img-top"
                                 alt="Hollywood Sign on The Hill" />
                             <div class="card-body">
-                                <h5 class="card-title">{{$data->name}}</h5>
+                                <h5 class="card-title">{{ $data->name }}</h5>
                                 <p class="card-text">
-                                    {{$data->description}}
+                                    {{ $data->description }}
                                 </p>
                                 <hr>
                                 <div class="">
                                     <h3 class="mt-3">Course Details</h3>
-                                    <p class="mt-3">Course Level: {{$data->level}}</p>
-                                    <p class="mt-3">Course Coach: <a href="/dashboard/coach/{{$userid->id}}">
-                                            {{$data->author}} </a></p>
+                                    <p class="mt-3">Course Level: {{ $data->level }}</p>
+                                    <p class="mt-3">Course Coach: <a href="/dashboard/coach/{{ $userid->id }}">
+                                            {{ $data->author }} </a></p>
                                 </div>
 
                                 <div>
-                                    <a target="_blank" href="{{$data->link}}" class="btn btn-success btn-sm w-100"><i
-                                            class="bi bi-play-circle"></i> WATCH</a>
+                                    <a target="_blank" href="{{ $data->link }}"
+                                        class="btn btn-success btn-sm w-100"><i class="bi bi-play-circle"></i> WATCH</a>
                                 </div>
                             </div>
                         </div>
@@ -186,34 +185,35 @@
                             <ul class="commentList">
                                 {{-- if no comment --}}
                                 @if (count($comments) == 0)
-                                <li class="mb-2">
-                                    BE THE FIRST COMMENT 👇👇
-                                </li>
+                                    <li class="mb-2">
+                                        BE THE FIRST COMMENT 👇👇
+                                    </li>
                                 @endif
                                 {{-- if no comment --}}
                                 {{-- if comment --}}
                                 @foreach ($comments as $comment)
-                                <li>
-                                    <div class="commenterImage">
-                                        <img src="{{asset('images/'.$comment->image)}}"" />
-                    </div>
-                    <div class=" commentText">
-                                        <p class="">{{$comment->comment}}</p> <span class="date sub-text">on
-                                            {{$comment->created_at}}</span>
+                                    <li>
+                                        <div class="commenterImage">
+                                            <img src="{{ asset('images/' . $comment->image) }}"" />
+                                        </div>
+                                        <div class=" commentText">
+                                            <p class="">{{ $comment->comment }}</p> <span class="date sub-text">on
+                                                {{ $comment->created_at }}</span>
 
-                                    </div>
-                                    @if (Auth::user()->id == $comment->user_id)
-                                    <div class="ms-5 ">
-                                        <form action="{{route('deletecomment')}}" method="post">
-                                            @method('post')
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{$comment->id}}">
-                                            <button class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i>
-                                                Delete</button>
-                                        </form>
-                                    </div>
-                                    @endif
-                                </li>
+                                        </div>
+                                        @if (Auth::user()->id == $comment->user_id)
+                                            <div class="ms-5 ">
+                                                <form action="{{ route('deletecomment') }}" method="post">
+                                                    @method('post')
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $comment->id }}">
+                                                    <button class="btn btn-danger btn-sm"><i
+                                                            class="bi bi-trash-fill"></i>
+                                                        Delete</button>
+                                                </form>
+                                            </div>
+                                        @endif
+                                    </li>
                                 @endforeach
                                 {{-- <li>
                     <div class="commenterImage">
@@ -221,7 +221,7 @@
                     </div>
                     <div class="commentText">
                         <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-    
+
                     </div>
                 </li>
                 <li>
@@ -230,7 +230,7 @@
                     </div>
                     <div class="commentText">
                         <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-    
+
                     </div>
                 </li>
                 <li>
@@ -239,17 +239,17 @@
                     </div>
                     <div class="commentText">
                         <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-    
+
                     </div>
                 </li>
             </ul> --}}
-                                <form class="form-inline " action="{{route('addcomment')}}" method="post">
+                                <form class="form-inline " action="{{ route('addcomment') }}" method="post">
                                     @csrf
                                     @method('POST')
                                     <div class="input-group">
                                         <input type="text" class="form-control rounded" name="comment"
                                             placeholder="Example comment" />
-                                        <input type="hidden" name="course_id" value="{{$data->id}}">
+                                        <input type="hidden" name="course_id" value="{{ $data->id }}">
                                         <button type="submit" class="btn btn-success"><i class="bi bi-pencil-fill"></i>
                                             Add Comment</button>
                                     </div>
@@ -265,8 +265,8 @@
                     @include('comp.jq')
 
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-                        crossorigin="anonymous"></script>
+                        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+                    </script>
 
 </body>
 

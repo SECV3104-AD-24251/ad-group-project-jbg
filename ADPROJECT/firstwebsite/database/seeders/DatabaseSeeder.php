@@ -60,5 +60,31 @@ class DatabaseSeeder extends Seeder
             'rating' => 5,
             'yearsofexperience' => 5,
         ]);
+
+        coach::factory()->create([
+            'name' => 'Zakaria El Azzou',
+            'user_id' => 1,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+            'image' => 'vectimg.png',
+            'sport' => 'football',
+            'price' => 100,
+            'location' => 'Casablanca',
+            'status' => 'available',
+            'rating' => 5,
+            'yearsofexperience' => 5,
+        ]);
+
+        coach::factory()->create([
+            'name' => 'Zakaria El Azzouz',
+            'user_id' => 3,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+            'image' => 'vectimg.png',
+            'sport' => 'football',
+            'price' => 100,
+            'location' => 'Casablanca',
+            'status' => 'available',
+            'rating' => 5,
+            'yearsofexperience' => 5,
+        ]);
     }
 }

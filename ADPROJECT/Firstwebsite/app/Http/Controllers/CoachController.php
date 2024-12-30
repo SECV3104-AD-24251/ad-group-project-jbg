@@ -50,7 +50,7 @@ class CoachController extends Controller
         $data->save();
         // change also the user info
         $user->name = request('name');
-        
+
         $user->save();
         return redirect()->back()->with('success', 'Coach updated successfully');
     }
@@ -76,7 +76,7 @@ class CoachController extends Controller
             'button' => '0',
 
             'body' => 'Your booking has been accepted by the coach'
-            
+
         ];
         Mail::to($booking->email)->send(new \App\Mail\TestEmail($details));
 
@@ -94,7 +94,7 @@ class CoachController extends Controller
             'button' => '0',
 
             'body' => 'Your booking has been rejected by the coach'
-            
+
         ];
         Mail::to($booking->email)->send(new \App\Mail\TestEmail($details));
 
@@ -112,7 +112,7 @@ class CoachController extends Controller
         $rejected = booking::where('coach_id', $data->id)->where('status', 'rejected')->get();
 
         return view('coach.dashboard', compact('data', 'bookings', 'accepted', 'pending', 'rejected'));
-       
+
     }
 
     /**
@@ -142,10 +142,10 @@ class CoachController extends Controller
         $inputs['sport'] = "football";
         $inputs['user_id'] = auth()->user()->id;
         $inputs['status'] = 'pending';
-         
+
         booking::create($inputs);
 
-        return redirect()->back()->with('success', 'Your booking has been sent to the coach');
+        return redirect()->back()->with('success', 'Your booking has been sent to venue admin');
     }
 
     public function addcourse(){
@@ -155,7 +155,7 @@ class CoachController extends Controller
         $inputs = $request->all();
         // find coaches where there names like search input or sport like search input
         $data = coach::where('name', 'like', '%'.$inputs['search'].'%')->orWhere('sport', 'like', '%'.$inputs['search'].'%')->get();
-       
+
         return view('user.coaches', compact('data'));
     }
     /**
@@ -172,7 +172,7 @@ class CoachController extends Controller
         return view('user.coach', compact('data', 'coachuser'));
         // return view('user.coach', compact('data'));
         //
-        
+
     }
 
     /**
@@ -216,7 +216,7 @@ class CoachController extends Controller
     }
 
     public function addacourse(Request $request){
-        // validation 
+        // validation
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -229,12 +229,12 @@ class CoachController extends Controller
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $inputs['image'] = "$profileImage";
- 
-          
+
+
         }
         $inputs['user_id'] = auth()->user()->id;
         $inputs['author'] = auth()->user()->name;
-      
+
 
         Course::create($inputs);
         return redirect()->route('mycourses')->with('addedd', 'Course added');
@@ -261,7 +261,7 @@ class CoachController extends Controller
             $image->move($destinationPath, $profileImage);
             $inputs['image'] = "$profileImage";
             $data->image = $inputs['image'];
-          
+
         }
         $data->save();
         return redirect()->route('mycourses')->with('updated', 'Course updated');
