@@ -5,7 +5,7 @@
                 <img src="images/First.jpg" alt="" class="img-fluid ">
             </div>
             <div class="col-md-6 ">
-                <h1 class="text-success ">Venue Managemnet - For Student, Lecturer And All</h1>
+                <h1 class="text-success ">Venue Management - For Student, Lecturer And All</h1>
                 <p class="text-dark">Book your Class Venue Here ! </p>
                 <a href="{{ route('register') }}" class="btn btn-outline-success w-75  mt-3 shadow rounded-3">Book a
                     session today! </a>

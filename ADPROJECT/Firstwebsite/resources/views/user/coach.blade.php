@@ -31,8 +31,8 @@
         <script>
             Swal.fire({
                 icon: 'error',
-                title: 'Oops...',
-                text: 'this time is alredy booked',
+                title: 'Oops...This time is already being booked',
+                text: 'Suggestion for alternative room: BK 2 ',
             })
         </script>
     @endif
@@ -43,7 +43,7 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'you can not book a session in the past',
+                text: '',
             })
         </script>
     @endif
@@ -55,7 +55,7 @@
             Swal.fire({
                 icon: 'success',
                 title: 'Good job!',
-                text: 'you have booked a session',
+                text: '',
             })
         </script>
     @endif

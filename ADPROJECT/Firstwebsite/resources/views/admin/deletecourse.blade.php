@@ -23,7 +23,7 @@
             Swal.fire({
                 icon: 'success',
                 title: 'Good job!',
-                text: 'you have accepted the coach',
+                text: '',
             })
         </script>
     @endif
@@ -34,7 +34,7 @@
             Swal.fire({
                 icon: 'success',
                 title: 'Good job!',
-                text: 'you have deleted the coach',
+                text: '',
             })
         </script>
     @endif

@@ -173,10 +173,10 @@
             {{-- <li>
               <a href="{{route('user.music')}}"><i class="bi bi-music-note-beamed"></i> Music</a>
       </li> --}}
-            {{-- <li>
-                <a href="{{ route('applycoachingindex') }}"><i class="bi bi-cash"></i> Be a coach</a>
-            </li>
             <li>
+                <a href="{{ route('applycoachingindex') }}"><i class="bi bi-cash"></i> Add Report</a>
+            </li>
+           {{--  <li>
                 <a href="#"><i class="bi bi-chat-left-dots-fill"></i> Chat</a>
             </li>
             <li>

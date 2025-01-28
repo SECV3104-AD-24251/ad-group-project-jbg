@@ -75,7 +75,7 @@
                         <thead class="bg-light">
                             <tr>
                                 <th>Name</th>
-                                <th>Sport</th>
+                                <th>Room</th>
                                 <th>Description</th>
                                 <th>Actions</th>
                             </tr>
@@ -95,7 +95,7 @@
                                     </td>
                                     <td>
                                         <p class="fw-normal mb-1">{{ $item->sport }}</p>
-                                        <p class="text-muted mb-0">{{ $item->yearsofexperience }} Years</p>
+                                        <p class="text-muted mb-0">{{ $item->yearsofexperience }}</p>
                                     </td>
                                     <td>
                                         {{-- <button class="btn btn-sm btn-outline-success"><i class="bi bi-eye-fill"></i> Read</button> --}}
@@ -121,7 +121,7 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         @csrf
-                                                        <label for="sport">
+                                                        <label for="room">
 
                                                             <h5 class="text-success">Description :</h5>
                                                             <p class="text-muted">{{ $item->description }} </p>

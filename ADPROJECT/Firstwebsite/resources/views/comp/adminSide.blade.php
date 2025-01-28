@@ -154,16 +154,15 @@
         <p class="text-white"> 👋 {{Auth::user()->name}}</p>
       </div>
       <li>
-        <a href="{{route('acceptcoachh')}}"><i class="bi bi-person-check"></i> Accept coachs</a>
+        <a href="{{route('acceptcoachh')}}"><i class="bi bi-person-check"></i> Unread Message</a>
       </li>
       <li>
-        <a href="{{route('showcoach')}}"><i class="bi bi-trash3-fill"></i> Delete coachs</a>
+        <a href="{{route('showcoach')}}"><i class="bi bi-trash3-fill"></i> History</a>
       </li>
-      <li>
-        <a href="{{route('showCourses')}}"><i class="bi bi-vector-pen"></i> Delete Course </a>
-      </li>
+   <!--    <li>
+        <a href="{{route('showCourses')}}"><i class="bi bi-vector-pen"></i> Delete Venues</a>
+      </li>-->
 
   </div>
   <!-- /#sidebar-wrapper -->
 
-  <!-- Page Content -->

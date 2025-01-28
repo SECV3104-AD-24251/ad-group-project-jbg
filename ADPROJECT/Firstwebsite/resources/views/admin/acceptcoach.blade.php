@@ -23,7 +23,7 @@
             Swal.fire({
                 icon: 'success',
                 title: 'Good job!',
-                text: 'you have accepted the coach',
+                text: 'Accept',
             })
         </script>
     @endif
@@ -34,7 +34,7 @@
             Swal.fire({
                 icon: 'success',
                 title: 'Good job!',
-                text: 'you have deleted the coach',
+                text: 'Delete',
             })
         </script>
     @endif
@@ -68,7 +68,7 @@
                         <thead class="bg-light">
                             <tr>
                                 <th>Name</th>
-                                <th>Sport</th>
+                                <th>Room</th>
                                 <th>Description</th>
                                 <th>Actions</th>
                             </tr>
@@ -88,7 +88,7 @@
                                     </td>
                                     <td>
                                         <p class="fw-normal mb-1">{{ $item->sport }}</p>
-                                        <p class="text-muted mb-0">{{ $item->yearsofexperience }} Years</p>
+                                        <p class="text-muted mb-0">{{ $item->yearsofexperience }}</p>
                                     </td>
                                     <td>
                                         {{-- <button class="btn btn-sm btn-outline-success"><i class="bi bi-eye-fill"></i> Read</button> --}}

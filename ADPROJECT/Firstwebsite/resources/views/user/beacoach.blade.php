@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Venue - Apply for coaching</title>
+    <title>Venue - File A Report</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -32,7 +32,7 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'you have already apply for coaching',
+                text: 'you have submit report',
             })
         </script>
     @endif
@@ -47,8 +47,8 @@
             // image in the sweet alert
             Swal.fire({
                 icon: 'success',
-                title: 'Good job!',
-                text: 'you have apply for coaching',
+                title: 'Thank you!',
+                text: 'you have file a report',
             })
         </script>
     @endif
@@ -83,8 +83,8 @@
                 {{-- --}}
                 @if (count($data) > 0)
                     <div class="col-md-12">
-                        <h1 class="text-success">Your Coaching Application</h1>
-                        <p class="text-dark">You have already applied for coaching. We will contact you soon.</p>
+                        <h1 class="text-success">Your Report Has been Submitted</h1>
+                        <p class="text-dark">Thank You for your cooperation. Admin will take further action!!</p>
                     </div>
                     <div class="imageGif">
                         <img src="https://64.media.tumblr.com/20bc582f7f3d22b8b3c65408bdffa7bb/fb0eba7a92a04691-54/s540x810/93301ec2be5458211b6a8f1432fe2204a91fb9c1.gif"
@@ -96,18 +96,14 @@
                             <div class="container ">
                                 <div class="row align-items-center">
                                     <div class="col-md-6">
-                                        <img src="../images/—Pngtree—fitness coach_488811.png" alt=""
+                                        <img src="../images/paper.jpg" alt=""
                                             class="img-fluid ">
                                     </div>
                                     <div class="col-md-6 ">
-                                        <h2 class="text-success ">Do you wanna be Coach ? </h2>
-                                        <p class="text-dark">Being a coach in sports is a fulfilling and rewarding
-                                            profession that involves
-                                            working with athletes to help them achieve their full potential. As a coach,
-                                            you play a critical
-                                            role in the development of your athletes, both on and off the field. </p>
+                                        <h2 class="text-success ">File a Report</h2>
+                                        <p class="text-dark">Make a report or complaint that you thought need a repair or upgrades.Thank you for the cooperation. </p>
                                         <button data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                            class="btn btn-success w-75  mt-3 shadow rounded-3">Apply now !</button>
+                                            class="btn btn-success w-75  mt-3 shadow rounded-3">File now !</button>
 
                                     </div>
                                 </div>
@@ -163,8 +159,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-clipboard-fill"></i> Apply for
-                        coach !
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-clipboard-fill"></i> File A Report!
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -172,15 +167,15 @@
                     <form action="{{ route('applycoaching') }}" method="post">
                         @csrf
                         <label for="sport">
-                            <h5 class="text-success">Sport :</h5>
+                            <h5 class="text-success">ROOM :</h5>
                             <input type="text" name="sport" class="form-control" id="sport"
-                                placeholder="Sport">
+                                placeholder="Room">
                         </label>
                         {{-- years of experience --}}
                         <label for="experience">
-                            <h5 class="text-success">Years of experience :</h5>
+                            <h5 class="text-success">ROOM NUMBER:</h5>
                             <input type="number" class="form-control" name="yearsofexperience" id="experience"
-                                placeholder="Years of experience">
+                                placeholder="Room Number">
                         </label>
                         {{-- localitaion --}}
                         <label for="location">
@@ -188,37 +183,29 @@
                             <select class="form-select" aria-label="Default select example" name="location">
                                 <option selected>Open this select menu</option>
                                 {{-- morocco citys as options value is the name of city --}}
-                                <option value="Casablanca">Casablanca</option>
-                                <option value="Rabat">Rabat</option>
-                                <option value="Marrakech">Marrakech</option>
-                                <option value="Fes">Fes</option>
-                                <option value="Tangier">Tangier</option>
-                                <option value="Agadir">Agadir</option>
-                                <option value="Meknes">Meknes</option>
-                                <option value="Oujda">Oujda</option>
-                                <option value="Kenitra">Kenitra</option>
-                                <option value="Tetouan">Tetouan</option>
-                                <option value="Safi">Safi</option>
+                                <option value="Faculty Computing">Faculty Computing</option>
+                                <option value="Rabat">Faculty Mechanical Eng</option>
+                                <option value="Marrakech">Faculty Civil Eng</option>
 
                             </select>
                         </label>
                         {{-- price par hour --}}
                         <label for="price">
-                            <h5 class="text-success">Price per hour :</h5>
+                            <h5 class="text-success">Number of Case :</h5>
                             <input type="number" class="form-control" id="price" name="price"
-                                placeholder="Price per hour">
+                                placeholder="How many cases?">
                         </label>
                         <label for="motivation">
                             <h5 class="text-success">Description :</h5>
                             <textarea class="form-control" name="description"
-                                placeholder="make sure to write a good description about you it will be shown to clients"
+
                                 id="exampleFormControlTextarea1" rows="8" cols="50"></textarea>
                         </label>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Apply</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                     </form>
                 </div>
             </div>
