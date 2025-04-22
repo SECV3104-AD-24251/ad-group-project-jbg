@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <h1>Value Management Platform (Use Branches At update-3)</h1>
+    <h1>Vanue Management Platform (Use Branches At update-3)</h1>
     <p>Optimize and track your resources effectively.</p>
   </header>
   <main>
