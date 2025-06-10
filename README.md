@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Value Management</title>
+  <title>Venue Management</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Value Management Platform (Use Branches - updated-3  + ADPROJECT file)</h1>
+    <h1>Venue Management Platform (Use Branches - updated-3  + ADPROJECT file)</h1>
     <p>Optimize and track your resources effectively.</p>
   </header>
   <main>
@@ -34,7 +34,7 @@
     </section>
   </main>
   <footer>
-    <p>&copy; 2024 Value Management. All rights reserved.</p>
+    <p>&copy; 2024 Venue Management. All rights reserved.</p>
   </footer>
   <script src="script.js"></script>
 </body>
